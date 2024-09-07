@@ -1,17 +1,17 @@
 import { IComponent } from "../rendering/interfaces";
 
 
-interface IProps {
+export interface IComponentProps {
     json: string,
     style?: string
 }
 
-class ComponentReceiver {
-    readonly props: IProps;
-    component?: IComponent;
+export class ComponentReceiver {
+    readonly props: IComponentProps;
+    component?: IComponent[];
     styles?: string;
 
-    constructor(props: IProps) {
+    constructor(props: IComponentProps) {
         this.props = props;
         this.parseComponent();
         this.parseStyles();
@@ -25,7 +25,7 @@ class ComponentReceiver {
         this.styles = this.props.style;
     }
 
-    getComponent(): IComponent | undefined {
+    getComponent(): IComponent[] | undefined {
         if (this.component === undefined) {
             console.log("Component cannot be parsed");
             return;
@@ -41,5 +41,3 @@ class ComponentReceiver {
         return this.styles;
     }
 }
-
-export default ComponentReceiver;

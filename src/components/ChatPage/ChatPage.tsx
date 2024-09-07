@@ -3,7 +3,7 @@ import { Box, Container, Paper, TextField, IconButton, Typography } from "@mui/m
 import SendIcon from '@mui/icons-material/Send';
 
 import { createPage } from "../../rendering/service";
-import ComponentReceiver from "../../utils/ComponentReceiver";
+import { ComponentReceiver } from "../../utils/ComponentReceiver";
 
 import './ChatPage.css'
 
@@ -35,7 +35,7 @@ const ChatPage: React.FC = () => {
                     </Typography>
                 </div>
             } else {
-                content = createPage([component]);
+                content = createPage(component);
             };
             const botResponse: Message = { sender: "bot", content: content};
             setMessages((prevMessages) => [...prevMessages, botResponse]);
