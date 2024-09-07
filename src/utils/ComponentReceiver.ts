@@ -14,6 +14,7 @@ class ComponentReceiver {
     constructor(props: IProps) {
         this.props = props;
         this.parseComponent();
+        this.parseStyles();
     }
 
     parseComponent(): void {
