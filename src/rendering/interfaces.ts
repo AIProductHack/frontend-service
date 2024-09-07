@@ -1,13 +1,20 @@
 type ComponentList = 
-    | 'Accordion'
     | 'Alert'
     | 'Button'
+    | 'Box'
+    | 'Card'
+    | 'Checkbox'
+    | 'List'
+    | 'Scrollbar'
+    | 'Sidebar'
     | 'Typography'
 
+
 export interface IComponent {
-    type: ComponentList;
-    data: {
-        id: string;
+    title: ComponentList;
+    type?: string;
+    properties: {
+        id?: string;
         children?: Array<IComponent>;
         content?: string;
         [key: string]: unknown;

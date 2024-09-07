@@ -1,25 +1,25 @@
 import './App.css';
-import { createPage } from './rendering/service';
-import { alert } from "./mock/alert"
-import { button } from "./mock/button"
 
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+import {MainPage} from './components/MainPage'
+import Authorization from './components/Authorization';
 
 function App() {
   return (
-    <div className="App">
-
-      
-      <h1>Generating examples</h1>
-      <h2>one</h2>
-      <div>
-        {createPage(alert)}
-      </div>
-      <h2>two</h2>
-      <div>
-        {createPage(button)}
-      </div>
-    </div>
-  );
+    <ChakraProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage/>} />
+          <Route path="/auth" element={<Authorization/>} />
+        </Routes>
+      </Router>
+    </ChakraProvider>
+  )
 }
 
 export default App;

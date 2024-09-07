@@ -2,15 +2,15 @@ import React from "react";
 import { IComponent } from "./interfaces";
 import { Components } from "./constants";
 
-export function createPage(data?: IComponent): React.ReactNode {
+export function createPage(data?: Array<IComponent>): React.ReactNode {
     if (!data) return null;
 
     function createComponent(item: IComponent): React.ReactNode {
-        const { type, data } = item;
-        const { id, children, content, ...rest } = data;
+        const { title, properties } = item;
+        const { id, children, content, ...rest } = properties;
         
         return React.createElement(
-            Components[type] as any,
+            Components[title] as any,
             {
                 ...rest,
                 id,
@@ -28,5 +28,5 @@ export function createPage(data?: IComponent): React.ReactNode {
         return createComponent(config);
     }
 
-    return renderer(data);
+    return data.map(createComponent);
 }
