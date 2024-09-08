@@ -4,11 +4,12 @@ import TextQueryHandler from "./Text";
 import AudioQueryHandler from "./Audio";
 import ImageQueryHandler from "./Image";
 
-type QueryMode = 
-    | 'json'
-    | 'text'
-    | 'audio'
-    | 'image'
+export enum QueryMode {
+    json,
+    text,
+    audio,
+    image,
+}
 
 class QueryHandlerFactory {
     mode: QueryMode;
@@ -19,16 +20,16 @@ class QueryHandlerFactory {
 
     getHandler(query: Query): QueryHandler {
         switch (this.mode) {
-            case 'json': {
+            case QueryMode.json: {
                 return new JsonQueryHandler(query);
             };
-            case 'text': {
+            case QueryMode.text: {
                 return new TextQueryHandler(query);
             }
-            case 'audio': {
+            case QueryMode.audio: {
                 return new AudioQueryHandler(query);
             };
-            case 'image': {
+            case QueryMode.image: {
                 return new ImageQueryHandler(query);
             }
         }
