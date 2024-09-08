@@ -1,29 +1,33 @@
 import { ReactNode } from "react";
-import QueryHandler, { QueryInput } from "./Abstract";
-import { IComponent } from "../rendering/interfaces";
+import QueryHandler, { Query } from "./Abstract";
+import JsonParser from "../rendering/parser";
+import { createPage } from "../rendering/service";
 
 
 class JsonQueryHandler extends QueryHandler {
-    constructor() {
-        super();
+    parser: JsonParser;
+
+    constructor(query: Query) {
+        super(query);
+        this.parser = new JsonParser();
+        this.processQuery();
     }
 
-    private sanitiseInput(text: string) {
-        return text.trim().replace("*", "");
-    }
-
-    acceptInput(query: QueryInput): void {
-        if (typeof (query.content) !== 'string') {
+    processQuery(): void {
+        if (typeof(this.content) !== 'string') {
             return;
         }
-        var text = this.sanitiseInput(query.content);
+        var components = this.parser.getComponent(this.content);
+        this.response = createPage(components);
     }
 
-    getRawResponse(): IComponent[] | undefined {
+    getRawResponse(): ReactNode {
         return;
     }
 
     getRenderedResponse(): ReactNode {
-        return;
+        return this.response;
     }
 }
+
+export default JsonQueryHandler;

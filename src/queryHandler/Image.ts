@@ -1,17 +1,18 @@
 import { ReactNode } from "react";
-import QueryHandler, { QueryInput } from "./Abstract";
+import QueryHandler, { Query } from "./Abstract";
 import { IComponent } from "../rendering/interfaces";
 
 
 class ImageQueryHandler extends QueryHandler {
-    constructor() {
-        super();
+    constructor(query: Query) {
+        super(query);
     }
 
-    acceptInput(query: QueryInput): void {
+    processQuery(): void {
+        return;
     }
 
-    getRawResponse(): IComponent[] | undefined {
+    getRawResponse(): ReactNode {
         return;
     }
 
@@ -19,3 +20,5 @@ class ImageQueryHandler extends QueryHandler {
         return;
     }
 }
+
+export default ImageQueryHandler;

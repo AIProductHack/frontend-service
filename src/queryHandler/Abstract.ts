@@ -2,15 +2,26 @@ import { ReactNode } from "react";
 import { IComponent } from "../rendering/interfaces";
 
 
-export interface QueryInput {
+export interface Query {
     userId?: string;
     content: string | Uint32Array;
 }
 
 abstract class QueryHandler {
-    abstract acceptInput(query: QueryInput): void;
+    userId?: string;
+    content: string | Uint32Array;
+    response?: ReactNode;
 
-    abstract getRawResponse(): IComponent[] | undefined;
+    constructor(query: Query) {
+        if (query.userId !== undefined) {
+            this.userId = query.userId;
+        }
+        this.content = query.content;
+    }
+
+    abstract processQuery(): void;
+
+    abstract getRawResponse(): ReactNode;
 
     abstract getRenderedResponse(): ReactNode;
 }

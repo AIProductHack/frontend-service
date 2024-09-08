@@ -1,17 +1,16 @@
 import { ReactNode } from "react";
-import QueryHandler, { QueryInput } from "./Abstract";
-import { IComponent } from "../rendering/interfaces";
+import QueryHandler, { Query } from "./Abstract";
 
 
 class AudioQueryHandler extends QueryHandler {
-    constructor() {
-        super();
+    constructor(query: Query) {
+        super(query);
     }
 
-    acceptInput(query: QueryInput): void {
+    processQuery(): void {
+        return;
     }
-
-    getRawResponse(): IComponent[] | undefined {
+    getRawResponse(): ReactNode {
         return;
     }
 
@@ -19,3 +18,5 @@ class AudioQueryHandler extends QueryHandler {
         return;
     }
 }
+
+export default AudioQueryHandler;

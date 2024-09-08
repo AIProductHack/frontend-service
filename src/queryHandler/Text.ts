@@ -1,25 +1,19 @@
 import { ReactNode } from "react";
-import QueryHandler, { QueryInput } from "./Abstract";
+import QueryHandler, { Query } from "./Abstract";
 import { IComponent } from "../rendering/interfaces";
 
 
 class TextQueryHandler extends QueryHandler {
-    constructor() {
-        super();
+
+    constructor(query: Query) {
+        super(query);
     }
 
-    private sanitiseInput(text: string) {
-        return text.trim().replace("*", "");
+    processQuery(): ReactNode {
+        return;
     }
 
-    acceptInput(query: QueryInput): void {
-        if (typeof (query.content) !== 'string') {
-            return;
-        }
-        var text = this.sanitiseInput(query.content);
-    }
-
-    getRawResponse(): IComponent[] | undefined {
+    getRawResponse(): ReactNode {
         return;
     }
 

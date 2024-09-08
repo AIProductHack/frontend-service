@@ -5,8 +5,9 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+
+import { Box } from '@mui/material';
 import MainPage from './components/MainPage';
-import TestPage from './components/TestPage';
 import ChatPage from './components/ChatPage/ChatPage';
 
 
@@ -15,7 +16,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<MainPage/>} />
-          <Route path='/test' element={<TestPage/>} />
           <Route path='/chat' element={<ChatPage />} />
         </Routes>
       </Router>
