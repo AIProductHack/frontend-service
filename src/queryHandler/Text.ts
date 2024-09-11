@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import QueryHandler, { Query } from "./Abstract";
-import { IComponent } from "../rendering/interfaces";
+import axios from "axios";
 
 
 class TextQueryHandler extends QueryHandler {
@@ -10,7 +10,11 @@ class TextQueryHandler extends QueryHandler {
     }
 
     processQuery(): ReactNode {
-        return;
+        backendUrl: string = process.env.BACKEND_API;
+        const response = axios.post(`${backendUrl}/accept_text`,
+
+
+        )
     }
 
     getRawResponse(): ReactNode {

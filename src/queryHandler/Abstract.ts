@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { IComponent } from "../rendering/interfaces";
 
 
 export interface Query {
