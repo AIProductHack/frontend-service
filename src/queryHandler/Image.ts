@@ -6,6 +6,7 @@ import { IComponent } from "../rendering/interfaces";
 class ImageQueryHandler extends QueryHandler {
     constructor(query: Query) {
         super(query);
+        this.processQuery();
     }
 
     processQuery(): void {

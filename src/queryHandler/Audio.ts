@@ -5,6 +5,7 @@ import QueryHandler, { Query } from "./Abstract";
 class AudioQueryHandler extends QueryHandler {
     constructor(query: Query) {
         super(query);
+        this.processQuery();
     }
 
     processQuery(): void {
