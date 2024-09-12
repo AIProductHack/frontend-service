@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import QueryHandler, { Query } from "./Abstract";
-import { IComponent } from "../rendering/interfaces";
 
 
 class ImageQueryHandler extends QueryHandler {

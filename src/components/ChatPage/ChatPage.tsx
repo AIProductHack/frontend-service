@@ -17,6 +17,7 @@ import { Query } from '../../queryHandler/Abstract';
 import QueryHandlerFactory, { QueryMode } from "../../queryHandler/Factory";
 
 import './ChatPage.css'
+import TextQueryHandler from "../../queryHandler/Text";
 
 type Message = {
     sender: string;
@@ -39,17 +40,19 @@ const ChatPage: React.FC = () => {
             setMessages((prevMessages) => [...prevMessages, userMessage]);
             setInputText("");
         }
-
         try {
             let handleMode: QueryMode = QueryMode[mode as keyof typeof QueryMode];
             const handlerFactory = new QueryHandlerFactory(handleMode);
             const query: Query = {
                 content: inputText.trim()
             };
-            var handler = handlerFactory.getHandler(query);
-            var content = handler.getRenderedResponse();
-            const botResponse: Message = { sender: "bot", content: content};
-            setMessages((prevMessages) => [...prevMessages, botResponse]);
+            const handler = handlerFactory.getHandler(query);
+            setTimeout(() => {
+                console.log("это временный костыль чтобы запрос успел обработаться");
+                const content = handler.getRenderedResponse();
+                const botResponse: Message = { sender: "bot", content: content };
+                setMessages((prevMessages) => [...prevMessages, botResponse]);
+            }, 30000);
         } catch (error) {
             const errStr = `${error}`;
             const botResponse: Message = { sender: "bot", content: errStr };

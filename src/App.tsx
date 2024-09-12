@@ -6,7 +6,6 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { Box } from '@mui/material';
 import MainPage from './components/MainPage';
 import ChatPage from './components/ChatPage/ChatPage';
 
