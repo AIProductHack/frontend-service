@@ -1,8 +1,8 @@
 import {IComponent} from "../rendering/interfaces"
 
 export const alert: IComponent = {
-    type: "Alert",
-    data: {
+    title: "Alert",
+    properties: {
         id: "test1",
         title: "Успешно сохранено",
         severity: "success",

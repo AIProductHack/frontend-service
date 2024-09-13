@@ -1,0 +1,17 @@
+.btn-primary {
+    /* Придуманные значения полей */
+    background-color: #0088cc;
+    /* Цвет кнопки */
+    color: white;
+    /* Цвет текста */
+    border: none;
+    /* Отсутствие рамки */
+    padding: 16px 32px;
+    /* Размер кнопки */
+    text-decoration: none;
+    /* Запрет подчеркивания при наведении */
+    position: relative;
+    left: 50%;
+    margin-top: 5%;
+
+}

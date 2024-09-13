@@ -1,14 +1,24 @@
 import {
-    Accordion,
     Alert,
     Button,
-    Typography
+    Box,
+    Card,
+    Checkbox,
+    List,
+    Scrollbar,
+    Sidebar,
+    Typography,
 
 } from "@nlmk/ds-2.0";
 
 export const Components = {
-    Accordion,
     Alert,
     Button,
-    Typography
+    Box,
+    Card,
+    Checkbox,
+    List,
+    Scrollbar,
+    Sidebar,
+    Typography,
 }
