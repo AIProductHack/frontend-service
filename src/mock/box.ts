@@ -19,7 +19,7 @@ export const box: IComponent = {
         "border": null,
         "color": null,
         "borderRadius": null,
-        "className": null,
+        "className": "null",
         "gap": null
     }
 }

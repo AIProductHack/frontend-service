@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import QueryHandler, { Query } from "./Abstract";
 import { createPage } from "../rendering/service";
 import { IComponent } from "../rendering/interfaces";
-import { Typography } from "@mui/material";
-import { error } from "console";
+import { parseCSS } from "../rendering/parser";
 
 async function getResponse(text: string): Promise<IComponent[]> {
     const headers: Headers = new Headers();
@@ -17,7 +16,21 @@ async function getResponse(text: string): Promise<IComponent[]> {
     return fetch(request)
         .then(res => res.json())
         .then(res => {
-            return res.data as IComponent[];
+            const { data, css } = res;
+            const style = parseCSS(css);
+            // const style = componentData.css;
+            data.forEach((element: IComponent) => {
+                const componentStyle = style.filter(
+                    (item) => item.selector.replace(".", "") === element.properties.className
+                );
+                if (componentStyle.length > 0) {
+                    element.properties.style = componentStyle[0].properties;
+                };
+
+            });
+            // const style = cssToJson(css) as React.CSSProperties;
+            const components: IComponent[] = data;
+            return components;
         })
         .catch(error => {
             console.log(error);
@@ -28,7 +41,6 @@ async function getResponse(text: string): Promise<IComponent[]> {
 class TextQueryHandler extends QueryHandler {
     constructor(query: Query) {
         super(query);
-        this.processQuery();
     }
 
     async processQuery(): Promise<void> {

@@ -18,7 +18,7 @@ abstract class QueryHandler {
         this.content = query.content;
     }
 
-    abstract processQuery(): void;
+    abstract processQuery(): Promise<void>;
 
     abstract getRawResponse(): ReactNode;
 

@@ -8,7 +8,7 @@ class AudioQueryHandler extends QueryHandler {
         this.processQuery();
     }
 
-    processQuery(): void {
+    async processQuery(): Promise<void> {
         return;
     }
     getRawResponse(): ReactNode {

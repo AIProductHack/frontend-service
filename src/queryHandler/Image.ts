@@ -8,7 +8,7 @@ class ImageQueryHandler extends QueryHandler {
         this.processQuery();
     }
 
-    processQuery(): void {
+    async processQuery(): Promise<void> {
         return;
     }
 

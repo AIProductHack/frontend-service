@@ -1,0 +1,53 @@
+.sidebar-default {
+    width: 200px;
+    height: 100vh;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ccc;
+}
+
+.box-1,
+.box-2,
+.box-3 {
+    margin-left: 220px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 100px;
+    width: calc(100% - 240px);
+}
+
+.button-1,
+.button-2,
+.button-3,
+.button-4 {
+    display: inline-block;
+    margin-left: 220px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-1 {
+    margin-top: 20px;
+}
+
+.button-2 {
+    margin-top: 10px;
+}
+
+.button-3 {
+    margin-top: 10px;
+}
+
+.button-4 {
+    margin-top: 10px;
+}

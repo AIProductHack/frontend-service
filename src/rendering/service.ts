@@ -7,7 +7,7 @@ export function createPage(data?: Array<IComponent>): React.ReactNode {
 
     function createComponent(item: IComponent): React.ReactNode {
         const { title, properties } = item;
-        const { id, children, content, ...rest } = properties;
+        const { id, children, content, style, ...rest } = properties;
         
         return React.createElement(
             Components[title] as any,
@@ -15,6 +15,7 @@ export function createPage(data?: Array<IComponent>): React.ReactNode {
                 ...rest,
                 id,
                 key: id,
+                style: style,
             } as any,
             content,
             Array.isArray(children)

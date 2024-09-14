@@ -1,3 +1,5 @@
+import React from "react";
+
 type ComponentList = 
     | 'Alert'
     | 'Button'
@@ -17,6 +19,8 @@ export interface IComponent {
         id?: string;
         children?: Array<IComponent>;
         content?: string;
+        style?: { [key: string]: string };
+        className?: string;
         [key: string]: unknown;
     }
 }

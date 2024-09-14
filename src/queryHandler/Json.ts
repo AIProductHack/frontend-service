@@ -13,7 +13,7 @@ class JsonQueryHandler extends QueryHandler {
         this.processQuery();
     }
 
-    processQuery(): void {
+    async processQuery(): Promise<void> {
         if (typeof(this.content) !== 'string') {
             return;
         }
