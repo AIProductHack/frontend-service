@@ -4,12 +4,12 @@ import { createPage } from "../rendering/service";
 import { IComponent } from "../rendering/interfaces";
 import { parseCSS } from "../rendering/parser";
 
-async function getResponse(text: string): Promise<IComponent[]> {
+async function getResponse(text: string, model: string): Promise<IComponent[]> {
     const headers: Headers = new Headers();
     headers.set('Accept', 'application/json');
     // const backendUrl: string = process.env.BACKEND_API;
     const backendUrl = "http://127.0.0.1:8080";
-    const request: RequestInfo = new Request(`${backendUrl}/query/text?text=${text}`, {
+    const request: RequestInfo = new Request(`${backendUrl}/query/text?text=${text}&model=${model}`, {
         method: "POST",
         headers: headers
     });
@@ -47,7 +47,7 @@ class TextQueryHandler extends QueryHandler {
         if (typeof this.content !== 'string') {
             return;
         }
-        const data = await getResponse(this.content);
+        const data = await getResponse(this.content, this.model);
         this.response = createPage(data);
     }
 

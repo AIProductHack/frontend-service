@@ -29,10 +29,15 @@ const ChatPage: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputText, setInputText] = useState<string>("");
     const [mode, setMode] = useState<string>("text");
+    const [model, setModel] = useState<string>("chatgpt");
 
     const handleModeChange = (event: any) => {
         setMode(event.target.value as string);
     };
+
+    const handleModelChange = (event: any) => {
+        setModel(event.target.value as string);
+    }
 
     const handleSendMessage = () => {
         if (inputText.trim()) {
@@ -44,6 +49,7 @@ const ChatPage: React.FC = () => {
             let handleMode: QueryMode = QueryMode[mode as keyof typeof QueryMode];
             const handlerFactory = new QueryHandlerFactory(handleMode);
             const query: Query = {
+                model: model,
                 content: inputText.trim()
             };
             const handler = handlerFactory.getHandler(query);
@@ -65,12 +71,28 @@ const ChatPage: React.FC = () => {
             <Box
                 component="header"
                 bgcolor="primary.dark"
+                height="30hv"
                 color="white"
                 p={2}
                 textAlign="center"
                 fontWeight="bold"
-            >
-                Component Generator
+            >    
+                <Box display="flex" justifyContent="left" alignSelf="left" bgcolor="primary.dark">
+                    <FormControl variant="outlined" style={{ minWidth: 200 }}>
+                        <InputLabel id="mode-select-label">Select Model</InputLabel>
+                        <Select
+                            labelId="mode-select-label"
+                            id="mode-select"
+                            value={model}
+                            onChange={handleModelChange}
+                            label="Select Model"
+                        >
+                            <MenuItem value="chatgpt">ChatGPT</MenuItem>
+                            <MenuItem value="gigachat">GigaChat</MenuItem>
+                            <MenuItem value="yandexgpt">YandexGPT</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
             </Box>
 
             <Container component="main" style={{ flexGrow: 1, overflowY: "auto", paddingTop: "16px" }}>
