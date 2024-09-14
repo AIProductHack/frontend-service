@@ -46,7 +46,6 @@ export interface CSSRule {
 export function parseCSS(css: string): CSSRule[] {
     const cssRules: CSSRule[] = [];
 
-    // Match each block of CSS, including grouped selectors like ".card1, .card2"
     const ruleRegex = /([^{]+)\{([^}]+)\}/g;
     let match: RegExpExecArray | null;
 
