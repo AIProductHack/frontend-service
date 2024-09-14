@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import QueryHandler, { Query } from "./Abstract";
 import { createPage } from "../rendering/service";
 import { IComponent } from "../rendering/interfaces";
@@ -18,17 +18,19 @@ async function getResponse(text: string, model: string): Promise<IComponent[]> {
         .then(res => {
             const { data, css } = res;
             const style = parseCSS(css);
-            // const style = componentData.css;
             data.forEach((element: IComponent) => {
                 const componentStyle = style.filter(
                     (item) => item.selector.replace(".", "") === element.properties.className
                 );
                 if (componentStyle.length > 0) {
-                    element.properties.style = componentStyle[0].properties;
+                    const elementStyle = componentStyle[0];
+                    if (!elementStyle.properties.hasOwnProperty("position")) {
+                        elementStyle.properties["position"] = "relative";
+                    }
+                    element.properties.style = elementStyle.properties;
                 };
 
             });
-            // const style = cssToJson(css) as React.CSSProperties;
             const components: IComponent[] = data;
             return components;
         })

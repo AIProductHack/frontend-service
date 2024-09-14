@@ -25,7 +25,6 @@ class JsonParser {
             if (componentStyle.length > 0) {
                 element.properties.style = componentStyle[0].properties;
             };
-            
         });
         this.component = componentData.data;
         console.log(this.component);

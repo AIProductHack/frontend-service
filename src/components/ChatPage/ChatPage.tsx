@@ -17,7 +17,6 @@ import { Query } from '../../queryHandler/Abstract';
 import QueryHandlerFactory, { QueryMode } from "../../queryHandler/Factory";
 
 import './ChatPage.css'
-import TextQueryHandler from "../../queryHandler/Text";
 
 type Message = {
     sender: string;
@@ -56,7 +55,8 @@ const ChatPage: React.FC = () => {
             handler.processQuery()
                 .then(() => {
                     const content = handler.getRenderedResponse();
-                    const botResponse: Message = { sender: "bot", content: content };
+                    var container = <div>{content}</div>;
+                    const botResponse: Message = { sender: "bot", content: container };
                     setMessages((prevMessages) => [...prevMessages, botResponse]);
                 });
         } catch (error) {
